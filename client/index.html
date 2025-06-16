@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кулинарные мастер-классы</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Кулинарные мастер-классы</h1>
+            <p>Научитесь готовить у лучших шеф-поваров</p>
+        </header>
+
+        <div class="card">
+            <h2>Рекомендации для вас</h2>
+            <div id="recommendations" class="masterclass"></div>
+        </div>
+
+        <div class="card">
+            <h2>Все мастер-классы</h2>
+            <div id="masterclasses" class="masterclass"></div>
+            <div class="card">
+                <h2>Добавить мастер-класс</h2>
+                <form id="addMasterclassForm">
+                    <select id="chef_id" required>
+                        <option value="">Выберите шефа</option>
+                      </select>
+                    <select id="recipe_id" required>
+                        <option value="">Выберите рецепт</option>
+                      </select>
+                    <input type="datetime-local" id="schedule" required>
+                    <input type="number" id="price" placeholder="Цена" step="0.01" required>
+                    <input type="number" id="max_participants" placeholder="Макс. участников">
+                    <button type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Все повара</h2>
+            <div id="chefs" class="masterclass"></div>
+        </div>
+        
+        <div class="card">
+            <h2>Все рецепты</h2>
+            <div id="recipes" class="masterclass"></div>
+        
+            <div class="card">
+                <h2>Добавить рецепт</h2>
+                <form id="addRecipeForm">
+                  <input type="text" id="title" placeholder="Название рецепта" required>
+                  <input type="number" id="cooking_time" placeholder="Время готовки (мин)" required>
+                  <select id="difficulty" required>
+                    <option value="легко">Легко</option>
+                    <option value="средне">Средне</option>
+                    <option value="сложно">Сложно</option>
+                  </select>
+                  
+                  <button type="submit">Добавить рецепт</button>
+                </form>
+              </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для редактирования рецепта -->
+    <div id="editRecipeModal" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Редактировать рецепт</h2>
+        <form id="editRecipeForm">
+            <input type="hidden" id="edit_recipe_id">
+            <input type="text" id="edit_title" placeholder="Название" required>
+            <input type="number" id="edit_cooking_time" placeholder="Время (мин)" required>
+            <select id="edit_difficulty" required>
+            <option value="легко">Легко</option>
+            <option value="средне">Средне</option>
+            <option value="сложно">Сложно</option>
+            </select>
+            <button type="submit">Сохранить</button>
+        </form>
+        </div>
+    </div>
+    
+    <!-- Модальное окно для редактирования мастер-класса -->
+    <div id="editMasterclassModal" class="modal">
+        <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Редактировать мастер-класс</h2>
+        <form id="editMasterclassForm">
+            <input type="hidden" id="edit_class_id">
+            <input type="hidden" id="edit_chef_id"> <!-- Добавляем -->
+            <input type="hidden" id="edit_recipe_id"> <!-- Добавляем -->
+            <input type="datetime-local" id="edit_schedule" required>
+            <input type="number" id="edit_price" placeholder="Цена" step="0.01" required>
+            <input type="number" id="edit_max_participants" placeholder="Макс. участников">
+            <button type="submit">Сохранить</button>
+          </form>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>
